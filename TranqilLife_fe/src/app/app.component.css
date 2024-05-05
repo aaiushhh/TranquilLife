@@ -1,0 +1,7 @@
+body{
+    height: 97vh;
+    width: 98vw;
+    background-size: 100%;
+    background-image: url("Tranquillife.png");
+    overflow: hidden;
+}

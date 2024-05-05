@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+        <div>
+      <p>{{title}}</p>
+     
+        <div>
+          
+          <div id="task_list">
+            <div id="addtask" (click)="displayAdd()" *ngIf="add">+ Add Task
+            </div>
+            <div id="input" *ngIf="!add">
+                <input type="text" [(ngModel)]="taskInput" placeholder="Enter Items">
+                <select [(ngModel)]="priority" name="priority" >
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+                <button (click)="addTask()" id="createTask">Add Task</button>
+              </div>
+              
+            <ul>
+              <li *ngFor="let task of taskList; let i = index" [class.completed]="task.completed">
+                <p>
+                <input type="checkbox" [checked]="task.completed" (change)="markCompleted(i)">
+                {{ task.task }} - {{ task.priority }}
+                <button (click)="removeTask(i)">Remove</button></p>
+              </li>
+
+            </ul>
+          </div>
+          <p id="del" (click)="saveToDB()">save data</p>
+        </div>
+      </div>
+
+</body>
+</html>

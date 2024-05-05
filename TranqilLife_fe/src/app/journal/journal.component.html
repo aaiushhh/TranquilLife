@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="">
+        <p> {{title}}</p>
+        <div id="journal">
+            <div *ngIf="!journal" id="addJournal" (click)="displayAdd()">+ Add Journal</div>
+            <div id="writeJournal" *ngIf="journal">
+                <div id="addtitle">
+                    <input type="text" name="" id="title" placeholder="Title" [(ngModel)]="titleJournal">
+                </div>
+                <h3>{{date}}</h3>
+                <div>
+                    <textarea name="" id="" cols="0" rows="10" placeholder="Journal here..." [(ngModel)]="journalData"></textarea>
+                    <p id="del" (click)="saveToDB()">Save Data</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="cover" *ngIf="login">
+
+    <div class="login-box">
+      <h2>Login</h2>
+
+      <div class="user-box">
+        <input type="text" name="" [(ngModel)]="username" (input)="clearError()">
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" [(ngModel)]="password" (input)="clearError()">
+        <label>Password</label>
+      </div>
+      <button id="submit" (click)="validateform()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </button>
+      <p id="error-msg">{{Error}}</p>
+      <div id="signup">
+        <p>Don't have an account? <a href="signup">Sign Up</a></p>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="admin" class="cover">
+    <div>
+    <p id="name">Welcome Admin</p>
+    <div id="journal">
+        <input type="submit" value="Fetch Detail" (click)="fetchDetails()" id="fetch">
+        <ul>
+          <li *ngFor="let user of userList">
+            Username: {{ user.username }} - Email: {{ user.email }}  <p id="del" (click)="deluser(user._id)">Delete</p>
+          </li>
+        </ul>
+    </div>
+  </div>
+  </div>
+
+  <div *ngIf="!login && !admin" class="cover">
+    <p id="name">Welcome {{username}}</p>
+    <div id="journal">
+      <ul>
+        <li>
+          Username: {{username}}
+          <br>
+          E-mail: {{email}}
+          <p id="del" (click)="logout()">Log-Out</p>
+          <p id="del" (click)="delUser()">Delete Account</p>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>

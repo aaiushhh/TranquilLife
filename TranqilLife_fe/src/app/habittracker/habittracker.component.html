@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>Habit tracker </p>
+        <div id="journal">
+            <div>
+                <p id="title2" *ngIf="isAddingHabits">Add Habits</p>
+                <p id="title2" *ngIf="!isAddingHabits">Daily Habit Check</p>
+           
+            <div class="habit-tracker">
+                
+              
+                <!-- Add Habit Form -->
+                <form *ngIf="isAddingHabits" (ngSubmit)="addHabit()">
+                  <label for="habitName">Habit Name:</label>
+                  <input type="text" id="habitName" [(ngModel)]="newHabitName" name="newHabitName" required>
+                  <button type="submit">Add Habit</button>
+                  <button type="button" (click)="startTracking()">Start Tracking</button>
+                </form>
+              
+                <!-- Habit Checkboxes -->
+                <div *ngIf="!isAddingHabits">
+                  <label *ngFor="let habit of habitsSelected">
+                    <input type="checkbox" [(ngModel)]="habit.checked" (change)="toggleHabitCheckbox(habit)">
+                    {{ habit.name }}
+                  </label>
+                  <p id="del" (click)="saveToDB()">Save Data</p>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+</div>
+</body>
+</html>
